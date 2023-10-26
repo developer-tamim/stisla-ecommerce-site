@@ -35,7 +35,7 @@
   ==============================-->
   <div class="wsus__dashboard_menu">
     <div class="wsusd__dashboard_user">
-      <img src="images/dashboard_user.jpg" alt="img" class="img-fluid">
+      <img src="{{asset('frontend/images/dashboard_user.jpg')}}" alt="img" class="img-fluid">
       <p>anik roy</p>
     </div>
   </div>
@@ -82,7 +82,7 @@
   <script src="{{asset('frontend/js/jquery.nice-number.min.js')}}"></script>
   <!--counter js-->
   <script src="{{asset('frontend/js/jquery.waypoints.min.js')}}"></script>
-  <script src="js/jquery.countup.min.js"></script>
+  <script src="{{asset('frontend/js/jquery.countup.min.js')}}"></script>
   <!--add row js-->
   <script src="{{asset('frontend/js/add_row_custon.js')}}"></script>
   <!--multiple-image-video js-->
