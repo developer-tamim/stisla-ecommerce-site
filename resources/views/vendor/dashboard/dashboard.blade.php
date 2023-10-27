@@ -1,8 +1,8 @@
-@extends('frontend.dashboard.layout.master')
+@extends('vendor.dashboard.layout.master')
 @section('content')
 <section id="wsus__dashboard">
     <div class="container-fluid">
-      @include('frontend.dashboard.layout.sidebar')
+      @include('venrod.dashboard.layout.sidebar')
       <div class="row">
         <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
           <div class="dashboard_content">
