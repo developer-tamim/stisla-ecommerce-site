@@ -29,8 +29,11 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request->all());
+
        $request->validate([
-            'banner' => ['required', 'image', 'max:2048'],
+            // 'banner' => ['required', 'image', 'max:2048'],
             'type' => ['string','max:200'],
             'title' => ['required','max:200'],
             'starting_price' => ['max:200'],
@@ -47,9 +50,11 @@ class SliderController extends Controller
        $slider->btn_url = $request->btn_url;
        $slider->serial = $request->serial;
        $slider->status = $request->status;
-       
+
        $slider->save();
 
+       toastr('Created successfully' , 'success');
+       return redirect()->back();
 
     }
 
