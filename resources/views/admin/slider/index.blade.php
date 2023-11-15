@@ -25,9 +25,10 @@
                 </div>
             </div>
               <div class="card-body">
+                {{ $dataTable->table() }}
 
               </div>
-              <div class="card-footer text-right">
+              {{-- <div class="card-footer text-right">
                 <nav class="d-inline-block">
                   <ul class="pagination mb-0">
                     <li class="page-item disabled">
@@ -43,7 +44,7 @@
                     </li>
                   </ul>
                 </nav>
-              </div>
+              </div> --}}
             </div>
           </div>
 
@@ -52,4 +53,8 @@
       </div>
     </section>
 
+
 @endsection
+@push('scripts')
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+@endpush
