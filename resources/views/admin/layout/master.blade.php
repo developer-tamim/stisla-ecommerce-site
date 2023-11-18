@@ -138,19 +138,27 @@
                             url: deleteUrl,
 
                             success: function(data) {
-                                console.log(data);
+                                if (data.status == 'success') {
+                                    Swal.fire({
+                                        "Deleted!"
+                                        data.message
+                                    });
+
+                                    window.location.reload();
+                                } else if (data.status == 'error'){
+
+                                    Swal.fire({
+                                        "Can't Deleted!"
+                                        data.message
+                                    });
+                                }
+
                             },
                             error: function(xhr, status, error) {
                                 console.log(error);
                             }
                         })
 
-
-                        Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success"
-                        });
                     }
                 });
             })
