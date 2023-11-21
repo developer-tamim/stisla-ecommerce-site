@@ -6,7 +6,9 @@ use App\DataTables\CategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Str;
+// use Str;
+use Illuminate\Support\Str;
+
 
 class CategoryController extends Controller
 {
