@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SliderController;
@@ -16,3 +17,6 @@ Route::post('profile/update/password', [ProfileController::class, 'updatePasswor
 
 // slider route
 Route::resource('slider', SliderController::class);
+
+// category route
+Route::resource('category', CategoryController::class);
