@@ -18,13 +18,18 @@
             </div>
               <div class="card-body">
 
-                <form action="{{route('admin.category.store')}}" method="POST">
+                <form action="{{route('admin.sub-category.store')}}" method="POST">
                     @csrf
 
                     <div class="form-group">
                       <label for="inputState">Category</label>
-                      <select id="inputState" class="form-control" name="status">
+                      <select id="inputState" class="form-control" name="category">
                         <option value="">Select</option>
+                        @foreach ($categories as $category)
+
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+
+                        @endforeach
                       </select>
                     </div>
                     <div class="form-group">
