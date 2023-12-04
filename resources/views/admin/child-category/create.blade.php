@@ -33,7 +33,7 @@
 
                                 <div class="form-group">
                                     <label for="inputState">Sub Category</label>
-                                    <select id="inputState" class="form-control sub-category" name="sub-category">
+                                    <select id="inputState-sub-category" class="form-control"  name="sub-category">
 
                                         <option value="">Select</option>
 
@@ -72,13 +72,13 @@
                     method: 'GET',
                     url: "{{ route('admin.getsubcategories') }}",
                     data: {
-                        id:id,
+                        id: id,
                         // _token: '{{ csrf_token() }}'
                     },
                     success: function(data){
-                        $('.sub-category').html('<option value="">Select</option>')
+                        $('#sub-category').html('<option value="">Select</option>')
                         $.each(data, function(i, item){
-                            $('.sub-category').append(`<option value="${item.id}">${item.name}</option>`)
+                            $('#sub-category').append(`<option value="${item.id}">${item.name}</option>`)
                         })
                     },
                     error: function(xhr, status, error){
