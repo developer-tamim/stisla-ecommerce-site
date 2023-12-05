@@ -4,7 +4,7 @@
 
     <section class="section">
       <div class="section-header">
-        <h1>Sub Category</h1>
+        <h1>Child Category</h1>
         {{-- <div class="section-header-breadcrumb">
           <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
           <div class="breadcrumb-item"><a href="#">Components</a></div>
@@ -19,7 +19,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4>All sub Categories</h4>
+                <h4>All child Categories</h4>
                 <div class="card-header-action">
                     <a href="{{route('admin.child-category.create')}}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Create New</a>
                 </div>
