@@ -68,7 +68,8 @@ class BrandController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+        return view('admin.brand.edit', compact('brand'));
     }
 
     /**
@@ -76,7 +77,27 @@ class BrandController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'logo' => ['image' , 'max:2000'],
+            'name' => ['required' , 'max:2000'],
+            'is_featured' => ['required'],
+            'status' => ['required'],
+        ]);
+
+        $brand = Brand::findOrFail($id);
+
+        $logoPath = $this->updateImage($request, 'logo', 'uploads', $brand->logo);
+
+        $brand->logo = empty(!$logoPath) ? $logoPath : $brand->logo;
+        $brand->name = $request->name;
+        $brand->slug = Str::slug($request->name);
+        $brand->is_featured = $request->is_featured;
+        $brand->status = $request->status;
+        $brand->save();
+
+        toastr('Updated successfully', 'success');
+        return redirect()->route('admin.brand.index');
     }
 
     /**
@@ -84,6 +105,17 @@ class BrandController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+        $this->deleteImage($brand->logo);
+        $brand->delete();
+
+        return response(['status' => 'success' , 'message' => 'Deleted successfully!']);
+    }
+    public function changeStatus(Request $request){
+        $category = Brand::findOrFail($request->id);
+        $category->status = $request->status == 'true' ? 1 : 0;
+        $category->save();
+
+        return response(['message' => 'Status has been updated!']);
     }
 }

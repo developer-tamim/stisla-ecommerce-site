@@ -32,6 +32,7 @@ class BrandDataTable extends DataTable
             })
             ->addColumn('logo', function($query){
                 return "<img width='100px' src='".asset($query->logo)."'></img>";
+                // return "<img width='100px' src='".url($query->logo)."'></img>";
             })
             ->addColumn('is_featured', function($query){
                 $active = '<i class="badge badge-success">Yes</i>';

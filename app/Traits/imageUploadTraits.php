@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-// use File;
+use File;
 use Illuminate\Http\Request;
 
 trait ImageUploadTraits{
