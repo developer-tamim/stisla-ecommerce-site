@@ -7,6 +7,26 @@ use Illuminate\Http\Request;
 
 trait ImageUploadTraits{
     public function uploadImage(Request $request, $inputName, $path){
+        $imagePahts = [];
+        if($request->hasFile($inputName)){
+
+
+            $images = $request->$inputName;
+
+            foreach($images as $image){
+                $ext = $image->getClientOriginalExtension();
+                $imageName = 'media_'.uniqid() . '.' .$ext;
+                $image->move(public_path($path), $imageName);
+
+                $imagePahts[] = $path.'/'.$imageName;
+            }
+
+            return $imagePahts;
+
+        }
+    }
+
+    public function uploadMultiImage(Request $request, $inputName, $path){
         if($request->hasFile($inputName)){
 
 
@@ -33,7 +53,7 @@ trait ImageUploadTraits{
             $imageName = 'media_'.uniqid() . '.' .$ext;
             $image->move(public_path($path), $imageName);
 
-            $path = "/uploads/".$imageName;
+            // $path = "/uploads/".$imageName;
 
             return $path.'/'.$imageName;
         }

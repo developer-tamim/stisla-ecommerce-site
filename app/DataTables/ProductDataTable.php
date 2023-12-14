@@ -22,7 +22,23 @@ class ProductDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'product.action')
+            // ->addColumn('action', 'product.action')
+            ->addColumn('action', function ($query) {
+                $editBtn = "<a href='" . route('admin.product.edit', $query->id) . "' class='btn btn-primary d-inline'><i class='fa-solid fa-pen-to-square'></i></a>";
+                $deleteBtn = "<a href='" . route('admin.product.destroy', $query->id) . "' class='btn btn-danger d-inline ml-2 delete-item'><i class='fa-regular fa-trash-can'></i></a>";
+                $moreBtn = '<div class="dropdown dropleft d-inline">
+                <button class="btn btn-primary dropdown-toggle ml-1" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa-solid fa-gear"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item has-icon" href="'.route('admin.product-image-gallery.index', ['product' => $query->id]).'"><i class="far fa-heart"></i> Image Gallery</a>
+                  <a class="dropdown-item has-icon" href="#"><i class="far fa-file"></i> Another action</a>
+                  <a class="dropdown-item has-icon" href="#"><i class="far fa-clock"></i> Something else here</a>
+                </div>
+              </div>';
+
+                return $editBtn . $deleteBtn . $moreBtn;
+            })
             ->addColumn('image', function ($query) {
                 return $img = "<img width='70px' src='" . asset($query->thumb_image) . "'></img>";
             })
@@ -46,7 +62,22 @@ class ProductDataTable extends DataTable
                         break;
                 }
             })
-            ->rawColumns(['image', 'type'])
+            ->addColumn('status', function ($query) {
+                if ($query->status == 1) {
+                    $button = '<label class="custom-switch mt-2">
+                    <input type="checkbox" checked name="custom-switch-checkbox" data-id="' . $query->id . '" class="custom-switch-input change-status">
+                    <span class="custom-switch-indicator"></span>
+                  </label>';
+                } else {
+                    $button = '<label class="custom-switch mt-2">
+                    <input type="checkbox" name="custom-switch-checkbox" data-id="' . $query->id . '" class="custom-switch-input change-status">
+                    <span class="custom-switch-indicator"></span>
+                  </label>';
+                }
+
+                return $button;
+            })
+            ->rawColumns(['image', 'type', 'status', 'action'])
             ->setRowId('id');
     }
 
@@ -90,7 +121,7 @@ class ProductDataTable extends DataTable
             Column::make('image'),
             Column::make('name'),
             Column::make('price'),
-            Column::make('type')->width(100),
+            Column::make('type')->width(150),
             Column::make('status'),
             Column::computed('action')
                 ->exportable(false)
