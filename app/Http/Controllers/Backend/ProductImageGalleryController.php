@@ -44,7 +44,7 @@ class ProductImageGalleryController extends Controller
 
         foreach($imagePaths as $path){
             $productImageGallery = new ProductImageGallery();
-            
+
             $productImageGallery->image = $path;
             $productImageGallery->product_id = $request->product;
             $productImageGallery->save();
@@ -84,6 +84,10 @@ class ProductImageGalleryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $productImage = ProductImageGallery::findOrFail($id);
+        $this->deleteImage($productImage->image);
+        $productImage->delete();
+
+        return response(['status' => 'success' , 'message' => 'Deleted successfully!']);
     }
 }
