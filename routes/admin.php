@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImageGalleryController;
 use App\Http\Controllers\Backend\ProductVariantController;
+use App\Http\Controllers\Backend\ProductVariantItemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SliderController;
@@ -52,6 +53,12 @@ Route::resource('product', ProductController::class);
 
 // product image gallery route
 Route::resource('product-image-gallery', ProductImageGalleryController::class);
+
 // product variant route
+Route::put('product-variant/change-status', [ProductVariantController::class, 'changeStatus'])->name('product-variant.change-status');
 Route::resource('product-variant', ProductVariantController::class);
+
+// product variant item route
+Route::put('product-variant/change-status', [ProductVariantItemController::class, 'changeStatus'])->name('product-variant-item.change-status');
+Route::resource('product-variant', ProductVariantItemController::class);
 
