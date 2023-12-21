@@ -6,7 +6,7 @@
         <div class="section-header">
             <h1>Prduct Variants</h1>
         </div>
-        
+
         <div class="mb-3">
             <a href="{{route('admin.product.index')}}" class="btn btn-primary">Back</a>
         </div>
@@ -18,7 +18,7 @@
                         <div class="card-header">
                             <h4>All Products Variants</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('admin.product.create') }}" class="btn btn-primary"><i
+                                <a href="{{ route('admin.product-variant-item.create') }}" class="btn btn-primary"><i
                                         class="fa-solid fa-plus"></i> Create New</a>
                             </div>
                         </div>
