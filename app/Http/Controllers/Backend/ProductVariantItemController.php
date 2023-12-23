@@ -15,4 +15,10 @@ class ProductVariantItemController extends Controller
         $variant = ProductVariant::findOrFail($variantId);
         return $dataTable->render('admin.product.product-variant.index', compact('product' , 'variant'));
     }
+
+    public function create(string $id){
+        $variant = ProductVariant::findOrFail($id);
+
+        return view('admin.product.product-variant-item.create', compact('variant'));
+    }
 }
