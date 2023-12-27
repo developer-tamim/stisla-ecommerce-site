@@ -24,12 +24,11 @@ class ProductVariantDataTable extends DataTable
         return (new EloquentDataTable($query))
             // ->addColumn('action', 'productvariant.action')
             ->addColumn('action', function($query){
-                $veriantItems = "<a href='".route('vendor.products-variant-item.index', ['productId' => request()->product, 'variantId' => $query->id])."' class='btn btn-info btn-space-right'><i class='far fa-edit'></i> Variant Items</a>";
+                $variantItems = "<a href='".route('vendor.products-variant.edit', $query->id)."' class='btn btn-info mr-2'><i class='far fa-edit'>Variant Items</a>";
+                $editBtn = "<a href='".route('admin.product-variant.edit', $query->id)."' class='btn btn-primary'><i class='far fa-edit'></i></a>";
+                $deleteBtn = "<a href='".route('admin.product-variant.destroy', $query->id)."' class='btn btn-danger ml-2 delete-item'><i class='far fa-trash-alt'></i></a>";
 
-                $editBtn = "<a href='".route('vendor.products-variant.edit', $query->id)."' class='btn btn-primary'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='".route('vendor.products-variant.destroy', $query->id)."' class='btn btn-danger ml-2 delete-item'><i class='far fa-trash-alt'></i></a>";
-
-                return $veriantItems.$editBtn.$deleteBtn;
+                return $variantItems.$editBtn.$deleteBtn;
             })
             ->addColumn('status', function($query){
                 if($query->status == 1){
@@ -81,13 +80,13 @@ class ProductVariantDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
+            Column::make('id')->width(80),
             Column::make('name'),
             Column::make('status'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(400)
                   ->addClass('text-center'),
             // Column::make('created_at'),
             // Column::make('updated_at'),

@@ -49,6 +49,7 @@ Route::resource('vendor-profile', AdminVendorProfileController::class);
 // product route
 Route::get('get-subcategories', [ProductController::class, 'getSubCategories'])->name('product.get-subcategories');
 Route::get('get-childcategories', [ProductController::class, 'getChildCategories'])->name('product.get-child-categories');
+Route::put('product/change-status', [ProductController::class, 'changeStatus'])->name('product.change-status');
 Route::resource('product', ProductController::class);
 
 // product image gallery route
@@ -59,7 +60,19 @@ Route::put('product-variant/change-status', [ProductVariantController::class, 'c
 Route::resource('product-variant', ProductVariantController::class);
 
 // product variant item route
-Route::get('product-variant-item/{productId}/{variantId}', [ProductVariantItemController::class, 'index'])->name('product-variant-item.index');
-Route::get('product-variant-item/{variantId}', [ProductVariantItemController::class, 'create'])->name('product-variant-item.create');
+Route::get('products-variant-item/{productId}/{variantId}', [ProductVariantItemController::class, 'index'])->name('products-variant-item.index');
+
+Route::get('products-variant-item/create/{productId}/{variantId}', [ProductVariantItemController::class, 'create'])->name('products-variant-item.create');
+Route::post('products-variant-item', [ProductVariantItemController::class, 'store'])->name('products-variant-item.store');
+
+Route::get('products-variant-item-edit/{variantItemId}', [ProductVariantItemController::class, 'edit'])->name('products-variant-item.edit');
+
+Route::put('products-variant-item-update/{variantItemId}', [ProductVariantItemController::class, 'update'])->name('products-variant-item.update');
+
+Route::delete('products-variant-item/{variantItemId}', [ProductVariantItemController::class, 'destroy'])->name('products-variant-item.destroy');
+
+Route::put('products-variant-item-status', [ProductVariantItemController::class, 'chageStatus'])->name('products-variant-item.chages-status');
+
+
 // Route::resource('product-variant', ProductVariantItemController::class);
 
