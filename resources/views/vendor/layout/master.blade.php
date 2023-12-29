@@ -9,7 +9,10 @@
   <title>One Shop || e-Commerce HTML Template</title>
   <link rel="icon" type="image/png" href="{{asset('frontend/images/favicon.png')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/all.min.css')}}">
+
   <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('backend/assets/modules/fontawesome/css/all.min.css') }}">
+  
   <link rel="stylesheet" href="{{asset('frontend/css/select2.min.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/slick.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/jquery.nice-number.min.css')}}">
@@ -22,6 +25,7 @@
   <link rel="stylesheet" href="{{asset('frontend/css/jquery.classycountdown.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/venobox.min.css')}}">
   <link rel="stylesheet" href="{{ asset('backend/assets/modules/summernote/summernote-bs4.css') }}">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 
   <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
@@ -102,6 +106,8 @@
 
   <script src="{{ asset('backend/assets/modules/summernote/summernote-bs4.js') }}"></script>
 
+  <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
 
   <!--main/custom js-->
   <script src="{{asset('frontend/js/main.js')}}"></script>
@@ -111,6 +117,8 @@
         height:150
     })
   </script>
+
+  @stack('scripts')
 </body>
 
 </html>
