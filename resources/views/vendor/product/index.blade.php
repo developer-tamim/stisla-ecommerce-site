@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
                     <div class="dashboard_content mt-2 mt-md-0">
-                        <h3><i class="far fa-user"></i>Shop profile</h3>
+                        <h3><i class="far fa-user"></i>Products</h3>
                         <div class="create_button">
                             <a href="{{route('vendor.product.create')}}" class="btn btn-primary">Create Product</a>
                         </div>
