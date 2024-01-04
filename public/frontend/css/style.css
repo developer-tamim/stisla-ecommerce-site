@@ -9454,3 +9454,7 @@ a:not([href]):not([class]):hover {
     text-align: right;
     margin-bottom: 10px;
 }
+
+.delete-item{
+    margin-left: 4px;
+}
